@@ -1,4 +1,4 @@
-ad87c0ba0312093bc83ca693f223fbfb *DESCRIPTION
+000b41efb228dc7e17c2c0e722c8744c *DESCRIPTION
 3642032e48cc1a23f279b6b3a17dfd00 *NAMESPACE
 51290dc664bbc5dc7048564554c2f58a *R/inoffice.R
 4caa0397692a30ab7eea00d71b02af4c *R/misc.R
@@ -6,10 +6,10 @@ ad87c0ba0312093bc83ca693f223fbfb *DESCRIPTION
 e1eec4077c70926f5f483f4173ba8607 *R/toTable.R
 4cb4da4e875726b427174cf04cdc28cf *R/toffice.R
 529d20f7013ba6a1979addf1174b3abf *README.md
-fc905efd33d5624a2cf82a2cacc8201e *build/vignette.rds
+2885fe2a325c53ee6da774933fc8b54e *build/vignette.rds
 03a0ac83edf845a0ddeee049484fe6dd *inst/doc/eoffice.R
-db8fa9409c59e0a516ea97160721908c *inst/doc/eoffice.Rmd
-c77a5e5687c5c7464be9ae18a019fed0 *inst/doc/eoffice.html
+aa0d9e6a08d62d69c622bee2c5f0d98d *inst/doc/eoffice.Rmd
+cc40174eb980b61f55c1e8281dabcb75 *inst/doc/eoffice.html
 e98530729a0843cc996bb08c7488a259 *man/convertplot.Rd
 f5f47cf25d5d90b9242981d4902b2555 *man/dot-getext.Rd
 bd1551beba77783df1ff391b4d25e253 *man/dot-getfilename.Rd
@@ -22,4 +22,4 @@ e2da1d376ffd3f2ed71cbd56ce05bbdc *man/toffice.Rd
 e03c94938577a4eea658239b6062ee62 *man/tofigure.Rd
 14982537f00de31c5a77b633c2f47b44 *man/topptx.Rd
 46a92f6c64e2f5cb41eeb2f3e798db5c *man/totable.Rd
-db8fa9409c59e0a516ea97160721908c *vignettes/eoffice.Rmd
+aa0d9e6a08d62d69c622bee2c5f0d98d *vignettes/eoffice.Rmd

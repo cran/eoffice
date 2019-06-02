@@ -17,7 +17,7 @@ output:
     toc_depth: 6
 vignette: |
   \usepackage[utf8]{inputenc}
-  %\VignetteIndexEntry{VennDetail}
+  %\VignetteIndexEntry{eoffice}
   %\VignetteEngine{knitr::knitr} 
 ---
 

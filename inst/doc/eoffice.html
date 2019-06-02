@@ -267,13 +267,13 @@ p &lt;- ggplot(mtcars, aes(mpg, disp, color = factor(cyl))) + geom_point()
 tofigure(p, filename = file.path(tempdir(), &quot;mtcars.pdf&quot;))
 </code></pre>
 
-<pre><code>## [1] &quot;../../../../../../../../../../var/folders/g1/__vv3_297r37q1lmf5w_s54r0000gn/T/RtmpDQ8u3o/mtcars.pdf&quot;
+<pre><code>## [1] &quot;../../../../../../../../../../var/folders/g1/__vv3_297r37q1lmf5w_s54r0000gn/T/RtmpjEdt9b/mtcars.pdf&quot;
 </code></pre>
 
 <pre><code class="r">tofigure(ggplot(mtcars, aes(mpg, disp, color = factor(cyl))) + geom_point(), filename = file.path(tempdir(), &quot;mtcars.eps&quot;))
 </code></pre>
 
-<pre><code>## [1] &quot;../../../../../../../../../../var/folders/g1/__vv3_297r37q1lmf5w_s54r0000gn/T/RtmpDQ8u3o/mtcars.eps&quot;
+<pre><code>## [1] &quot;../../../../../../../../../../var/folders/g1/__vv3_297r37q1lmf5w_s54r0000gn/T/RtmpjEdt9b/mtcars.eps&quot;
 </code></pre>
 
 <pre><code class="r">## if you use basic plot function or other plot function you need first use convertplot to convert 
