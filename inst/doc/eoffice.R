@@ -6,6 +6,12 @@
 library(eoffice)
 library(ggplot2)
 
+## ----eval=FALSE----------------------------------------------------------
+#   Please install imageMagick to use the _infigure_ function. On Linux you need to install the ImageMagick++ library: on Debian/Ubuntu this is called libmagick++-dev:
+#  sudo apt-get install libmagick++-dev
+#  On Fedora or CentOS/RHEL we need ImageMagick-c++-devel:
+#  sudo yum install ImageMagick-c++-devel
+
 ## ----fig2, fig.width = 6, fig.height = 5, fig.align = "center"-----------
 plot(mtcars$mpg, mtcars$disp, col = factor(mtcars$cyl), pch = 20)
 topptx(filename = file.path(tempdir(), "mtcars.pptx")) 
@@ -30,6 +36,9 @@ tabs <- inpptx(filename = file.path(tempdir(), "mtcars.pptx"), header = TRUE)
 p <- ggplot(mtcars, aes(mpg, disp, color = factor(cyl))) + geom_point()
 tofigure(p, filename = file.path(tempdir(), "mtcars.pdf"))
 tofigure(ggplot(mtcars, aes(mpg, disp, color = factor(cyl))) + geom_point(), filename = file.path(tempdir(), "mtcars.eps"))
+## Not support emf and eps formats 
+tofigure(ggplot(mtcars, aes(mpg, disp, color = factor(cyl))) + geom_point(), filename = file.path(tempdir(), "mtcars.jpg"))
+infigure(file.path(tempdir(), "mtcars.jpg"),exclude_col = c("white","black")) 
 ## if you use basic plot function or other plot function you need first use convertplot to convert 
 ## it to ggplot object when you are working on the platform without GUI
 ## p <- convertplot(plot(1:10))
