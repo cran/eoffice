@@ -3,14 +3,17 @@
 ##' @importFrom officer read_docx
 ##' @importFrom officer read_pptx
 ##' @importFrom magrittr %>%
-##' @importFrom officer add_slide
-##' @importFrom rvg ph_with_vg
+##' @importFrom officer add_slide ph_with ph_location
+##' @importFrom officer ph_location_type
+##' @importFrom officer body_add_par
+##' @importFrom rvg dml
 ##' @importFrom rvg body_add_vg
 ##' @importFrom grDevices recordPlot
 ##' @importFrom grDevices dev.cur hcl
 ##' @param figure plot figure function
 ##' @param format file format
 ##' @param filename output filename
+##' @param title title for the figure
 ##' @param append append or not
 ##' @param width width of the output figure
 ##' @param height height of the output figure
@@ -27,6 +30,7 @@
 ##' @author Kai Guo
 ##' @export
 toffice <- function(figure = NULL, format = "pptx", filename= "temp.pptx",
+                    title="",
                     append = FALSE, width = 4, height = 4, devsize = FALSE,
                     units = "in"){
     format = tolower(format)
@@ -57,14 +61,15 @@ toffice <- function(figure = NULL, format = "pptx", filename= "temp.pptx",
                 doc <- read_pptx(filename)
             }else{
                 doc <- read_pptx()
-                doc <- add_slide(doc,"Title and Content", "Office Theme")
-                print(doc,target=filename)
+                doc <- add_slide(doc, layout = "Title and Content", master = "Office Theme")
+                print(doc, target=filename)
             }
         }else{
             doc <- read_pptx()
         }
-        doc <- add_slide(doc,"Title and Content", "Office Theme")
-        doc <- ph_with_vg(doc, print(p), width = width, height = height)
+        doc <- add_slide(doc,layout = "Title and Content", master = "Office Theme")
+        doc <- ph_with(doc, value = title, location = ph_location_type(type = "title"))
+        doc <- ph_with(doc, dml(code = print(p)), location = ph_location(width = width, height = height))
         print(doc,target=filename)
     }
     if(format == "doc"){
@@ -78,6 +83,7 @@ toffice <- function(figure = NULL, format = "pptx", filename= "temp.pptx",
         }else{
             doc <- read_docx()
         }
+        doc <- body_add_par(doc, value = title, style = "Normal" )
         doc <- body_add_vg(doc, print(p), width = width, height = height)
         print(doc,target=filename)
     }
@@ -87,6 +93,7 @@ toffice <- function(figure = NULL, format = "pptx", filename= "temp.pptx",
 ##' @name topptx
 ##' @param figure plot figure function
 ##' @param filename output filename
+##' @param title title for the figure
 ##' @param width width of the output figure
 ##' @param height height of the output figure
 ##' @param append append or not
@@ -102,9 +109,9 @@ toffice <- function(figure = NULL, format = "pptx", filename= "temp.pptx",
 ##' }
 ##' @author Kai Guo
 ##' @export
-topptx <- function(figure = NULL, filename = NULL, width = 6, height = 6,
+topptx <- function(figure = NULL, filename = NULL, title = "", width = 6, height = 6,
         append = FALSE, devsize = FALSE, units = "in"){
-    toffice(figure = figure, filename = filename, format = "pptx",
+    toffice(figure = figure, filename = filename, format = "pptx", title = title,
             width = width, height = height, append = append, devsize = devsize,
             units = units)
 }
@@ -112,6 +119,7 @@ topptx <- function(figure = NULL, filename = NULL, width = 6, height = 6,
 ##' @name todocx
 ##' @param figure plot figure function
 ##' @param filename output filename
+##' @param title title for the figure
 ##' @param width width of the output figure
 ##' @param height height of the output figure
 ##' @param append append or not
@@ -127,9 +135,9 @@ topptx <- function(figure = NULL, filename = NULL, width = 6, height = 6,
 ##' }
 ##' @author Kai Guo
 ##' @export
-todocx <- function(figure =NULL, filename = NULL, width = 6, height = 6,
+todocx <- function(figure =NULL, filename = NULL, title = "", width = 6, height = 6,
                     append = FALSE, devsize = FALSE, units = "in"){
-    toffice(figure = figure, filename = filename, format = "docx",
+    toffice(figure = figure, filename = filename, format = "docx", title = title,
             width = width, height = height,append = append, devsize = devsize,
             units = units)
 }
