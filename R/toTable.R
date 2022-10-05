@@ -41,9 +41,7 @@ totable <- function(data, filename, format = NULL, append = FALSE){
     if(length(intersect(class(data),typecl))==0){
         data = tidy(data)
     }else{
-        if(class(data)=="matrix"){
-            data = as.data.frame(data)
-        }
+        data = as.data.frame(data)
     }
     ft <- flextable(data = data) %>%
         theme_booktabs() %>% bold(part = "header") %>%
