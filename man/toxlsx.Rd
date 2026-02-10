@@ -24,7 +24,7 @@ toxlsx(
 
 \item{devsize}{Boolean value show use device size or not (default = FALSE)}
 
-\item{units}{the units in which to return the value – inches, cm, or pixels (device units)}
+\item{units}{the units in which to return the value: inches, cm, or pixels (device units)}
 }
 \description{
 export figure to pptx

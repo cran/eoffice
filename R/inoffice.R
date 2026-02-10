@@ -3,8 +3,9 @@
 ##' @importFrom officer docx_summary
 ##' @importFrom officer pptx_summary
 ##' @importFrom magrittr %>%
-##' @importFrom dplyr filter_
-##' @importFrom dplyr select_
+##' @importFrom dplyr filter
+##' @importFrom dplyr select
+##' @importFrom rlang .data
 ##' @param filename input filename
 ##' @param format pptx or docx
 ##' @param header use first row as column name
@@ -41,14 +42,14 @@ inoffice <- function(filename, format = NULL, header = TRUE){
                        content$content_type,
                        function(x) length(unique(x)))
     }
-    table_cells <- filter_(content, ~content_type %in% "table cell")
+    table_cells <- filter(content, .data$content_type %in% "table cell")
     if(format == "ppt"){
         len <- length(unique(table_cells$slide_id))
         res<-vector(len,mode="list")
         for(i in 1:len){
-            sub_table <- filter_(table_cells, ~slide_id == i)
+            sub_table <- filter(table_cells, .data$slide_id == i)
             for(j in unique(sub_table$id)){
-                data <- filter_(table_cells, ~id == j) %>% select_(~row_id, ~cell_id, ~text)
+                data <- filter(table_cells, .data$id == j) %>% select("row_id", "cell_id", "text")
                 data <- tapply(data$text,
                         list(row_id = data$row_id,
                         cell_id = data$cell_id
@@ -64,7 +65,7 @@ inoffice <- function(filename, format = NULL, header = TRUE){
         len <- length(unique(table_cells$doc_index))
         res<-vector(len,mode="list")
         for(i in unique(table_cells$doc_index)){
-            data <- filter_(table_cells, ~doc_index == i)%>%select_(~row_id, ~cell_id, ~text)
+            data <- filter(table_cells, .data$doc_index == i) %>% select("row_id", "cell_id", "text")
             data <- tapply(data$text,
                            list(row_id = data$row_id,
                                 cell_id = data$cell_id

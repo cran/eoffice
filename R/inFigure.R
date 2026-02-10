@@ -9,10 +9,10 @@
 ##' @importFrom ggplot2 geom_text
 ##' @importFrom ggplot2 ggplot
 ##' @importFrom ggplot2 aes
-##' @importFrom ggplot2 aes_string
 ##' @importFrom ggplot2 scale_fill_manual
 ##' @importFrom grDevices dev.size
 ##' @importFrom graphics plot
+##' @importFrom rlang .data
 ##' @name infigure
 ##' @param filename input filename
 ##' @param format format of input file
@@ -64,8 +64,8 @@ infigure <- function(filename, format = NULL, exclude_col = NULL, topn = 10,
     if(isTRUE(showcol)){
         dd <- data.frame(rep(1,topn),coln)
         colnames(dd) <- c("name","col")
-        pp<-ggplot(dd,aes_string("col","name",fill="col"))+geom_bar(stat="identity")+
-            geom_text(aes(label=col),vjust=10)+scale_fill_manual(values=coln)+
+        pp<-ggplot(dd,aes(.data$col, .data$name, fill=.data$col))+geom_bar(stat="identity")+
+            geom_text(aes(label=.data$col),vjust=10)+scale_fill_manual(values=coln)+
             .theme_blank()
         print(pp)
     }

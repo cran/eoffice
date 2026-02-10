@@ -1,16 +1,16 @@
 ## ----install,eval = FALSE-----------------------------------------------------
-#  # library(devtools)
-#  # install_github("guokai8/eoffice")
+# # library(devtools)
+# # install_github("guokai8/eoffice")
 
 ## ----load, results = 'hide', message = FALSE----------------------------------
 library(eoffice)
 library(ggplot2)
 
 ## ----eval=FALSE---------------------------------------------------------------
-#   Please install imageMagick to use the _infigure_ function. On Linux you need to install the ImageMagick++ library: on Debian/Ubuntu this is called libmagick++-dev:
-#  sudo apt-get install libmagick++-dev
-#  On Fedora or CentOS/RHEL we need ImageMagick-c++-devel:
-#  sudo yum install ImageMagick-c++-devel
+#  Please install imageMagick to use the _infigure_ function. On Linux you need to install the ImageMagick++ library: on Debian/Ubuntu this is called libmagick++-dev:
+# sudo apt-get install libmagick++-dev
+# On Fedora or CentOS/RHEL we need ImageMagick-c++-devel:
+# sudo yum install ImageMagick-c++-devel
 
 ## ----fig2, fig.width = 6, fig.height = 5, fig.align = "center"----------------
 plot(mtcars$mpg, mtcars$disp, col = factor(mtcars$cyl), pch = 20)

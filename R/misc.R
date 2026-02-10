@@ -21,7 +21,7 @@
 .setcolnames <- function(file){
     names(file) <- as.matrix(file[1, ])
     file <- file[-1, ]
-    file[] <- lapply(file, function(x) type.convert(as.character(x)))
+    file[] <- lapply(file, function(x) type.convert(as.character(x), as.is = TRUE))
     file
 }
 ##' convert basic plot to ggplot object
